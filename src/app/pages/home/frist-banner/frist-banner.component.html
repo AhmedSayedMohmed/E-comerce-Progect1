@@ -1,0 +1,18 @@
+<div class="container mx-auto">
+    <div class="lg:grid grid-cols-12">
+        <div class="col-span-8">
+            <owl-carousel-o [options]="customOptions">
+                <ng-template carouselSlide> <img class="h-[500px]" src="/images/slider-image-1.jpeg" alt=""></ng-template>
+                <ng-template carouselSlide> <img class="h-[500px]" src="/images/slider-image-2.jpeg" alt=""></ng-template>
+                <ng-template carouselSlide> <img class="h-[500px]" src="/images/slider-image-3.jpeg" alt=""></ng-template>
+            </owl-carousel-o>
+        </div>
+        <div class="col-span-4 hidden xl:block">
+            <div>
+                <img class="block w-full h-[250px]" src="/images/slider-image-2.jpeg" alt="">
+                <img class="block w-full h-[250px]" src="images/slider-image-3.jpeg" alt="">
+            </div>
+
+        </div>
+    </div>
+</div>

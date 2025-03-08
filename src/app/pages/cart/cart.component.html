@@ -1,0 +1,60 @@
+@if (isLoading) {
+<div class="flex justify-center items-center h-screen">
+    <p class="text-green-600 text-lg">Loading cart...</p>
+</div>
+}
+@else {
+<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6 my-6">
+    <h1 class="text-2xl font-bold mb-4">FreshCart</h1>
+    <h2 class="text-xl font-semibold mb-4">Shop Cart</h2>
+    <div class="border-b pb-4 mb-4">
+        <p class="text-lg font-semibold text-green-600">
+            Total Cart Price: <span class="text-green-600">{{ cartDetails.totalCartPrice }} EGP</span>
+        </p>
+    </div>
+
+    <div class="space-y-4">
+        @for (item of cartDetails.products; track item.product._id) {
+        <div class="grid md:grid-cols-[10%_minmax(0,1fr)] gap-4 border-b pb-4">
+            <div>
+                <img [src]="item.product.imageCover" alt="{{ item.product.title }}"
+                    class="w-full h-20 object-cover rounded-lg">
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h3 class="font-medium">{{ item.product.title }}</h3>
+                    <p class="text-green-600">Price: {{ item.price }} EGP</p>
+                    <button (click)="removeItems(item.product._id)"
+                        class="text-green-600 hover:text-green-700 transition-colors duration-200">
+                        <i class="fas fa-trash-can"></i> Remove
+                    </button>
+                </div>
+                <div class="flex items-center space-x-2 mt-2 md:mt-0">
+                    <button class="text-2xl text-green-600 hover:text-green-700"
+                        (click)="updateProduct(item.product._id, item.count - 1)" aria-label="Decrease quantity">
+                        <i class="fa-regular fa-square-minus"></i>
+                    </button>
+                    <span class="text-lg">{{ item.count }}</span>
+                    <button class="text-2xl text-green-600 hover:text-green-700"
+                        (click)="updateProduct(item.product._id, item.count + 1)" aria-label="Increase quantity">
+                        <i class="fa-regular fa-square-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="flex justify-between items-center mt-6">
+        <button (click)="clearCart()"
+            class="py-2 px-4 text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors duration-200 font-semibold">
+            <i class="fas fa-trash-can text-white"></i> Clear Cart
+        </button>
+        <button [routerLink]="['/checkout', cartDetails._id]"
+            class="py-2 px-4 text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors duration-200 font-semibold">
+            <i class="fas fa-credit-card"></i> Proceed to Payment
+        </button>
+    </div>
+</div>
+}

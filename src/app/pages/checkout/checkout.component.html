@@ -1,0 +1,39 @@
+<form (ngSubmit)="submitForm()" [formGroup]="checkoutForm" class="max-w-md mx-auto my-5 p-6 bg-white shadow-md rounded-lg"> 
+    <h1 class="text-3xl font-bold text-center text-green-600 mb-8">
+        CheckOut
+      </h1>
+    <div class="mb-4">
+      <label for="details" class="block text-sm font-medium text-gray-700">Details</label>
+      <textarea
+        id="details"
+        formControlName="details"
+        placeholder="Enter details"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+      ></textarea>
+    </div>
+    <div class="mb-4">
+      <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+      <input
+        id="phone"
+        formControlName="phone"
+        placeholder="Enter your phone number"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+      />
+    </div>
+    <div class="mb-6">
+      <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+      <input
+        id="city"
+        formControlName="city"
+        placeholder="Enter your city"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+      />
+    </div> 
+    <button
+      type="submit"
+      [disabled]="checkoutForm.invalid"
+      class="w-full px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+    >
+      Online Payment
+    </button>
+  </form>

@@ -1,0 +1,42 @@
+@if (isLoading) {<div class="flex justify-center items-center h-screen">
+  <p class="text-green-600 text-lg">Loading products...</p>
+</div>}
+@else {
+@if (detailProduct) {
+<div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6 my-5 mt-10">
+  <!-- Product Title -->
+  <h1 class="text-2xl font-bold text-green-600 mb-4 text-center">
+    Details Product
+  </h1>
+
+  <!-- Flex Container for Image and Details -->
+  <div class="flex flex-col md:flex-row gap-6 items-center">
+    <!-- Product Image -->
+    <div class="md:w-1/2">
+      <img [src]="detailProduct.imageCover" [alt]="detailProduct.title" class="w-full h-auto rounded-lg">
+    </div>
+
+    <!-- Product Details -->
+    <div class="md:w-1/2 space-y-2 text-gray-700">
+      <h2 class="font-semibold">{{detailProduct.title}}</h2>
+      <p class="text-muted">{{detailProduct.description}}</p>
+      <h3 class="h5">{{detailProduct.category.name}}</h3>
+      <div class="flex items-center justify-between">
+        <span class="text-gray-800 font-bold">{{detailProduct.price}} EGP</span>
+        <div class="flex items-center">
+          @for (item of [1,2,3,4,5].slice(0,detailProduct.ratingsAverage); track $index) {
+          <i class="fas fa-star-half-stroke text-yellow-400"></i>
+          }
+          <span class="text-gray-600 ml-1">{{detailProduct.ratingsAverage}}</span>
+        </div>
+      </div>
+
+      <!-- Add to Cart Button -->
+      <button (click)="addToCart(detailProduct.id)" class="w-full bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-600 transition duration-300">
+        + Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+}
+}

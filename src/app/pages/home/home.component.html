@@ -1,0 +1,51 @@
+@if (isLoading) {
+<div class="flex justify-center items-center h-screen">
+    <p class="text-green-600 text-lg">Loading products...</p>
+</div>
+
+}
+@else {
+<div class="my-6">
+    @defer {<app-frist-banner></app-frist-banner>}
+</div>
+<div class="my-6 ">
+    @defer {<app-sconde-banner></app-sconde-banner>}
+</div>
+
+<section class="py-10 bg-gray-50 my-6">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-center mb-8">Popular Products</h2>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            @for (item of products.slice(0,12); track item.id) {
+            <div
+                class="card group border border-green-500 rounded-md overflow-hidden relative bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div [routerLink]="['/details',item.id]">
+                    <div class="overflow-hidden">
+                        <img [src]="item.imageCover" [alt]="item.title"
+                            class="w-full object-contain transform hover:scale-105 transition-transform duration-300 h-[250px]">
+                    </div>
+                    <div class="px-4 py-4">
+                        <h4 class="text-green-500 text-sm font-semibold mb-1">{{item.category.name}}</h4>
+                        <h3 class="font-medium text-lg mb-2">{{item.title.split(' ', 2).join(" ") }}</h3>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-800 font-bold">{{item.price}} EGP</span>
+                            <div class="flex items-center">
+                                @for (item of [1,2,3,4,5].slice(0,item.ratingsAverage); track $index) {
+                                <i class="fas fa-star-half-stroke text-yellow-400"></i>
+                                }
+                                <span class="text-gray-600 ml-1">{{item.ratingsAverage}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="addToCart(item.id)"
+                    class="bg-green-600 text-white py-2 px-10 border rounded w-[90%] mx-auto block opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-1000 delay-2000 mt-4">
+                    Add To Cart
+                    <i class="fa fa-cart-plus font-bold"></i>
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+}

@@ -1,0 +1,16 @@
+@if (brands.length > 0) {
+<div class="p-6 bg-white shadow-md rounded-lg">
+    <h2 class="text-2xl font-bold mb-4 text-gray-800">Brands List</h2>
+    <ul class="space-y-2">
+        @for (brand of brands; track $index) {
+        <li class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+            <span class="text-gray-700">{{ brand.name }}</span>
+        </li>
+        }
+    </ul>
+</div>
+} @else {
+<div class="flex justify-center items-center h-32">
+    <p class="text-green-600">Loading brands...</p>
+</div>
+}

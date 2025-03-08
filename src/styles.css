@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{
+  font-family: "Playfair Display", serif;
+}
+.btn-main {
+  background-color: green;
+  color: white;
+  padding: 10px 45px;
+  margin: 3px 2px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.ahmed
+{
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  margin: 3px 2px;
+  border-radius: 8px;
+
+}
+/* ===================================================== */
+
